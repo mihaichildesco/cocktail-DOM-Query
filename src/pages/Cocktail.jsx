@@ -21,13 +21,13 @@ export const loader =
   async ({ params }) => {
     const { id } = params;
     await queryClient.ensureQueryData(singleCocktailQuery(id));
-    return { id, data };
+    return { id };
   };
 
 const Cocktail = () => {
   const { id } = useLoaderData();
-  const singleDrink = data.drinks[0];
   const { data } = useQuery(singleCocktailQuery(id));
+  const singleDrink = data.drinks[0];
   const {
     strDrink: name,
     strDrinkThumb: image,
